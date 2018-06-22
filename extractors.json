@@ -1,0 +1,257 @@
+{
+  "extractors": [
+    {
+      "title": "url",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "url",
+      "extractor_config": {
+        "regex_value": "((?<=URL:\\s).*)"
+      },
+      "condition_type": "string",
+      "condition_value": "URL"
+    },
+    {
+      "title": "attack_name",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "attack_name",
+      "extractor_config": {
+        "regex_value": "((?<=\\s\").+?(?=\"))"
+      },
+      "condition_type": "string",
+      "condition_value": "firepower"
+    },
+    {
+      "title": "egress_zone",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "egress_zone",
+      "extractor_config": {
+        "regex_value": "((?<=EgressZone:\\s).+?(?=,))"
+      },
+      "condition_type": "string",
+      "condition_value": "SFIMS"
+    },
+    {
+      "title": "src_ip",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "src_ip",
+      "extractor_config": {
+        "regex_value": "((?<=SrcIP:\\s).+?(?=,))"
+      },
+      "condition_type": "string",
+      "condition_value": "SFIMS"
+    },
+    {
+      "title": "dst_port",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "dst_port",
+      "extractor_config": {
+        "regex_value": "((?<=DstPort:\\s).+?(?=,))"
+      },
+      "condition_type": "string",
+      "condition_value": "SFIMS"
+    },
+    {
+      "title": "rule_action",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "rule_action",
+      "extractor_config": {
+        "regex_value": "((?<=AccessControlRuleAction:\\s).+?(?=,))"
+      },
+      "condition_type": "string",
+      "condition_value": "SFIMS"
+    },
+    {
+      "title": "rule_name",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "rule_name",
+      "extractor_config": {
+        "regex_value": "((?<=AccessControlRuleName:\\s).+?(?=,))"
+      },
+      "condition_type": "string",
+      "condition_value": "SFIMS"
+    },
+    {
+      "title": "dst_ip",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "dst_ip",
+      "extractor_config": {
+        "regex_value": "((?<=DstIP:\\s).+?(?=,))"
+      },
+      "condition_type": "string",
+      "condition_value": "SFIMS"
+    },
+    {
+      "title": "protocol",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "protocol",
+      "extractor_config": {
+        "regex_value": "((?<=\\sProtocol:\\s).+?(?=,))"
+      },
+      "condition_type": "string",
+      "condition_value": "SFIMS"
+    },
+    {
+      "title": "src_port",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "src_port",
+      "extractor_config": {
+        "regex_value": "((?<=SrcPort:\\s).+?(?=,))"
+      },
+      "condition_type": "string",
+      "condition_value": "SFIMS"
+    },
+    {
+      "title": "ingress_zone",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "ingress_zone",
+      "extractor_config": {
+        "regex_value": "((?<=IngressZone:\\s).+?(?=,))"
+      },
+      "condition_type": "string",
+      "condition_value": "SFIMS"
+    },
+    {
+      "title": "NAP_policyname",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "NAP_policyname",
+      "extractor_config": {
+        "regex_value": "((?<=NAPPolicy:\\s).+?(?=,))"
+      },
+      "condition_type": "string",
+      "condition_value": "SFIMS"
+    },
+    {
+      "title": "app_protocol",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "app_protocol",
+      "extractor_config": {
+        "regex_value": "((?<=ApplicationProtocol:\\s).+?(?=,))"
+      },
+      "condition_type": "string",
+      "condition_value": "SFIMS"
+    },
+    {
+      "title": "OTX_dst",
+      "extractor_type": "lookup_table",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "dst_ip",
+      "target_field": "OTX_dst",
+      "extractor_config": {
+        "lookup_table_name": "otx-api-ip"
+      },
+      "condition_type": "string",
+      "condition_value": "SFIMS"
+    },
+    {
+      "title": "OTX_src",
+      "extractor_type": "lookup_table",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "src_ip",
+      "target_field": "OTX_src",
+      "extractor_config": {
+        "lookup_table_name": "otx-api-ip"
+      },
+      "condition_type": "string",
+      "condition_value": "SFIMS"
+    },
+    {
+      "title": "attack_impact",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "attack_impact",
+      "extractor_config": {
+        "regex_value": "((?<=\\[Impact:\\s).+?(?=]))"
+      },
+      "condition_type": "string",
+      "condition_value": "firepower"
+    },
+    {
+      "title": "attack_classification",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "attack_classification",
+      "extractor_config": {
+        "regex_value": "((?<=\\[Classification:\\s).+?(?=]))"
+      },
+      "condition_type": "string",
+      "condition_value": "firepower"
+    },
+    {
+      "title": "attack_priority",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "attack_priority",
+      "extractor_config": {
+        "regex_value": "((?<=\\[Priority:\\s).+?(?=]))"
+      },
+      "condition_type": "string",
+      "condition_value": "firepower"
+    }
+  ],
+  "version": "2.4.5"
+}
